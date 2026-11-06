@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#0B1220">
+<title>Rulaj – parc auto rulate, Timișoara</title>
+<meta name="description" content="Rulaj – mașini rulate verificate în 120 de puncte, cu km confirmați și 12 luni garanție. Machetă demo.">
+<link rel="preload" href="/fonts/outfit-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/inter-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23C6F432'/%3E%3Cpath d='M7 19l3-7h12l3 7M8 19h16v4H8z' fill='none' stroke='%230B1220' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E">
+<script src="/js/data.js" defer></script>
+<script src="/js/stock.js" defer></script>
+<script src="/js/car.js" defer></script>
+<script src="/js/credit.js" defer></script>
+<script src="/js/tradein.js" defer></script>
+<script src="/js/app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#stoc">Sari la stoc</a>
+<div class="demo" role="note">Machetă demo – stoc, prețuri și calcule de exemplu</div>
+
+<div class="hero">
+ <img src="/img/hero-parc-1376.webp" srcset="/img/hero-parc-800.webp 800w, /img/hero-parc-1376.webp 1376w" sizes="100vw" width="1376" height="768" fetchpriority="high" decoding="async" alt="Parc auto cu mașini rulate în fața unui showroom de sticlă, la apus">
+ <header class="nv"><div class="wrap">
+  <a class="logo" href="/"><i><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0B1220" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M4 15l3-6h10l3 6M5 15h14v3H5zM7.5 18v1.5M16.5 18v1.5"/></svg></i>Rulaj<small>parc auto rulate · Timișoara</small></a>
+  <nav class="lk" aria-label="Meniu"><a href="#stoc">Stoc</a><a href="#verificare">Verificare 120 puncte</a><a href="#credit">Credit</a><a href="#buyback">Îți cumpărăm mașina</a></nav>
+  <div class="nr"><button class="fav" type="button" data-favs="1">♥ Favorite <span id="favN">0</span></button><a class="btn btn-l" href="#stoc" style="height:44px">Vezi stocul</a></div>
+ </div></header>
+ <div class="wrap hx">
+  <span class="chip" style="background:#1D2A10;color:var(--li)">● <span id="stockN">7</span> mașini în parc azi</span>
+  <h1 class="o" style="margin-top:18px">Mașini rulate,<br><em>fără surprize.</em></h1>
+  <p>Fiecare mașină trece prin verificarea în 120 de puncte, are kilometrii confirmați și 12 luni garanție. Prețul afișat e prețul final.</p>
+  <form class="srch" role="search" id="srch">
+   <label>Marcă<select id="sM"><option value="">Toate mărcile</option></select></label>
+   <label>Caroserie<select id="sC"><option value="">Oricare</option></select></label>
+   <label>Buget maxim<select id="sB"><option value="">Oricât</option><option value="10000">10.000 €</option><option value="15000">15.000 €</option><option value="20000">20.000 €</option><option value="25000">25.000 €</option></select></label>
+   <label>Cutie<select id="sT"><option value="">Oricare</option><option>Automată</option><option>Manuală</option></select></label>
+   <button class="btn btn-l" id="go" type="submit">Caută mașini →</button>
+  </form>
+  <div class="trust"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg><b>120</b> puncte verificate</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg>Km <b>confirmați</b></span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg><b>12 luni</b> garanție</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg>Retur în <b>7 zile</b></span></div>
+ </div>
+</div>
+
+<main>
+<section class="s wrap" id="stoc">
+ <div class="sh"><div><span class="ey">Stoc</span><h2 class="o">Mașinile din parc</h2></div><span class="cnt" id="cnt" aria-live="polite"></span></div>
+ <div class="bar" id="bar">
+  <button type="button" class="pill on" data-q="">Toate</button><button type="button" class="pill" data-q="sub10">Sub 10.000 €</button><button type="button" class="pill" data-q="suv">SUV</button><button type="button" class="pill" data-q="auto">Automată</button><button type="button" class="pill" data-q="km">Sub 100.000 km</button><button type="button" class="pill" data-q="fam">Familie</button><button type="button" class="pill" data-q="fav">♥ Favorite <span id="favN2">0</span></button>
+  <span class="sp"></span>
+  <select id="sort" aria-label="Sortare"><option value="rec">Recomandate</option><option value="pa">Preț crescător</option><option value="pd">Preț descrescător</option><option value="km">Km puțini</option><option value="an">Cele mai noi</option></select>
+ </div>
+ <div class="grid" id="grid"></div>
+</section>
+
+<section class="s wrap" id="verificare"><div class="chk">
+ <div><span class="ey" style="color:var(--li)">Verificare în 120 de puncte</span><h2 class="o" style="margin-top:12px">Știi exact <em>ce cumperi.</em></h2>
+  <p>Înainte să intre în parc, fiecare mașină trece printr-o verificare tehnică completă, făcută de mecanicii noștri. Primești raportul tipărit la cumpărare, iar ce era de reparat am reparat deja.</p>
+  <div style="display:flex;gap:10px;margin-top:24px;flex-wrap:wrap"><a class="btn btn-l" href="#stoc">Vezi mașinile verificate</a><button type="button" class="btn btn-o" data-rep="1">Exemplu de raport</button></div></div>
+ <div class="pts"><div><b>34</b><span>puncte motor și transmisie</span></div><div><b>22</b><span>frâne, suspensie, direcție</span></div><div><b>28</b><span>caroserie și vopsea, măsurată cu grosimetrul</span></div><div><b>36</b><span>electrică, diagnoză și dotări</span></div></div>
+</div></section>
+
+<section class="s wrap"><div class="tools">
+ <!-- CREDIT -->
+ <div class="panel" id="credit"><span class="ey">Credit auto</span><h2 class="h3">Cât plătești pe lună?</h2>
+  <div class="rng"><div class="tp"><span>Prețul mașinii</span><b id="vP"></b></div><input type="range" id="cP" min="4000" max="40000" step="100" value="15900" aria-label="Prețul mașinii"></div>
+  <div class="rng"><div class="tp"><span>Avans</span><b id="vA"></b></div><input type="range" id="cA" min="0" max="50" step="5" value="20" aria-label="Avans procent"></div>
+  <div class="rng"><div class="tp"><span>Perioadă</span><b id="vN"></b></div><div class="segs" id="cN" role="group" aria-label="Perioadă"></div></div>
+  <div class="res" id="cRes" aria-live="polite"></div><p class="repr" id="cRepr"></p>
+  <button type="button" class="btn btn-k" id="cApply">Cere pre-aprobare în 30 de minute</button>
+  <form name="credit" id="fCredit" class="subform" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+   <input type="hidden" name="form-name" value="credit">
+   <p class="hp" hidden><label>Nu completa acest câmp: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+   <input type="hidden" name="pret"><input type="hidden" name="avans"><input type="hidden" name="perioada"><input type="hidden" name="rata"><input type="hidden" name="total"><input type="hidden" name="dae">
+   <div class="fl">
+    <label class="full">Mașina<select name="masina" id="fcCar"><option value="">Încă nu am ales</option></select></label>
+    <label>Nume<input name="nume" required autocomplete="name" maxlength="80"></label>
+    <label>Telefon<input name="telefon" type="tel" required autocomplete="tel" inputmode="tel" pattern="(?:\+?40|0)[\s.\-]?\d(?:[\s.\-]?\d){8}" title="Număr de telefon din România, ex. 0712 345 678"></label>
+   </div>
+   <p class="note">Pentru pre-aprobare ne trebuie doar numele și telefonul. Nu îți cerem CNP, venituri sau date de card pe site.</p>
+   <p class="err" hidden></p>
+   <div class="acts"><button class="btn btn-l" type="submit">Trimite cererea</button><button class="btn btn-g" type="button" data-wa="credit">Trimite pe WhatsApp</button></div>
+  </form>
+  <div class="thanks" data-for="credit" hidden></div>
+ </div>
+
+ <!-- ESTIMARE / EVALUARE -->
+ <form class="panel" id="buyback" name="evaluare-masina" method="POST" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data">
+  <input type="hidden" name="form-name" value="evaluare-masina">
+  <p class="hp" hidden><label>Nu completa acest câmp: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+  <input type="hidden" name="estimare" id="tEst">
+  <span class="ey">Îți cumpărăm mașina</span><h2 class="h3">Cât valorează mașina ta?</h2>
+  <p style="color:var(--mu);font-size:14.5px">O estimare rapidă, apoi o ofertă fermă după o inspecție de 30 de minute. Banii îi primești în aceeași zi sau îi scazi din prețul mașinii pe care o cumperi.</p>
+  <div class="fl">
+   <label>Caroserie<select id="tC" name="caroserie"></select></label>
+   <label>Segment<select id="tS" name="segment"></select></label>
+   <label>An fabricație<select id="tY" name="an"></select></label>
+   <label>Kilometri<input id="tK" name="kilometri" type="number" value="140000" step="1000" min="0" max="999999" inputmode="numeric" required></label>
+   <label>Stare<select id="tQ" name="stare"></select></label>
+   <label>Combustibil<select id="tF" name="combustibil"></select></label>
+  </div>
+  <div class="tv"><div><span>Estimare orientativă</span><b id="tV" aria-live="polite"></b></div><button type="button" class="btn btn-l" id="tOpen" style="height:46px">Programează inspecția</button></div>
+  <p class="repr">Estimarea e orientativă (demo). Oferta fermă se face după inspecție, în funcție de istoric, dotări și piață.</p>
+  <div id="tMore" class="subform" hidden>
+   <div class="fl">
+    <label class="full">Marcă și model<input name="marca-model" required maxlength="80" placeholder="ex. Dacia Logan 1.5 dCi"></label>
+    <label>Nume<input name="nume" required autocomplete="name" maxlength="80"></label>
+    <label>Telefon<input name="telefon" type="tel" required autocomplete="tel" inputmode="tel" pattern="(?:\+?40|0)[\s.\-]?\d(?:[\s.\-]?\d){8}" title="Număr de telefon din România, ex. 0712 345 678"></label>
+   </div>
+   <div class="up">
+    <label class="upbtn" for="tFiles">＋ Adaugă poze <small>JPG sau PNG · maximum 10 · 8 MB în total</small></label>
+    <input type="file" id="tFiles" accept="image/jpeg,image/png,.jpg,.jpeg,.png" multiple class="sr-only">
+    <ul class="files" id="tList"></ul>
+    <p class="err" id="tFileErr" hidden></p>
+    <div hidden><input type="file" name="poza-1"><input type="file" name="poza-2"><input type="file" name="poza-3"><input type="file" name="poza-4"><input type="file" name="poza-5"><input type="file" name="poza-6"><input type="file" name="poza-7"><input type="file" name="poza-8"><input type="file" name="poza-9"><input type="file" name="poza-10"></div>
+   </div>
+   <p class="err" hidden></p>
+   <div class="acts"><button class="btn btn-l" type="submit">Trimite pentru ofertă fermă</button><button class="btn btn-g" type="button" data-wa="evaluare">Trimite pe WhatsApp</button></div>
+  </div>
+ </form>
+</div></section>
+</main>
+
+<footer><div class="wrap in">
+ <div><a class="logo" href="/"><i><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0B1220" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M4 15l3-6h10l3 6M5 15h14v3H5zM7.5 18v1.5M16.5 18v1.5"/></svg></i>Rulaj</a><p style="margin-top:12px">Parc auto rulate, verificate și garantate.</p></div>
+ <div><h2 class="h5">Parc auto</h2>Calea Exemplului 100<br>Timișoara</div>
+ <div><h2 class="h5">Program</h2>Luni – Vineri 9–19<br>Sâmbătă 9–15</div>
+ <div><h2 class="h5">Contact</h2>0700 000 000<br>vanzari@exemplu.ro</div>
+</div>
+<div class="wrap bot"><span>Machetă demo · Mărcile aparțin proprietarilor lor · Site realizat de <b style="color:#fff">CristianWeb</b></span><a href="https://cristianweb.ro">Vreau un site ca acesta →</a></div></footer>
+
+<div class="cbar" id="cbar" aria-live="polite"><span><b id="cbN">0</b>/3 de comparat</span><div class="th" id="cbT"></div><a class="btn btn-l" style="height:42px" id="cbGo" href="/compara">Compară</a></div>
+
+<div class="ov" id="ov">
+ <div class="md" id="md" role="dialog" aria-modal="true" aria-labelledby="dTitle" tabindex="-1">
+  <button class="x" type="button" data-close="1" aria-label="Închide">×</button>
+
+  <!-- FIȘA MAȘINII -->
+  <div id="vCar" hidden><div class="det">
+   <div class="gal"><img id="dImg" src="" alt="" width="400" height="260"><div class="th" id="dTh" hidden></div>
+    <div class="rep" id="dRep"><h3 class="o" style="font-size:20px;margin:6px 0 12px">Raport verificare · 120/120</h3>
+     <div class="rr"><span>✓ Motor și transmisie</span><b>34/34</b></div><div class="rr"><span>✓ Frâne și suspensie</span><b>22/22</b></div><div class="rr"><span>✓ Caroserie (vopsea originală)</span><b>28/28</b></div><div class="rr"><span>✓ Electrică și diagnoză</span><b>36/36</b></div>
+     <p class="repr" style="margin-top:12px">Raport de exemplu (demo).</p></div>
+   </div>
+   <div class="tx">
+    <span class="chip">✓ Verificat · km confirmați</span><h2 id="dTitle" class="dh"></h2>
+    <div class="pr" style="font-size:38px" id="dPr"></div>
+    <div class="kv" id="dKv"></div>
+    <div class="eq" id="dEq"></div>
+    <a class="lnk" href="#credit" id="dCredit">Calculează rata pentru această mașină →</a>
+    <form name="test-drive" id="fTd" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+     <input type="hidden" name="form-name" value="test-drive">
+     <p class="hp" hidden><label>Nu completa acest câmp: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+     <input type="hidden" name="masina"><input type="hidden" name="ziua"><input type="hidden" name="ora">
+     <b style="font-size:14px">Programează un test drive</b>
+     <div class="days" id="dDays" role="group" aria-label="Ziua"></div>
+     <div class="slots" id="dSlots" role="group" aria-label="Ora"></div>
+     <div class="fl"><label>Nume<input name="nume" required autocomplete="name" maxlength="80"></label><label>Telefon<input name="telefon" type="tel" required autocomplete="tel" inputmode="tel" pattern="(?:\+?40|0)[\s.\-]?\d(?:[\s.\-]?\d){8}" title="Număr de telefon din România, ex. 0712 345 678"></label></div>
+     <p class="err" hidden></p>
+     <button class="btn btn-l" type="submit" id="dBook">Rezervă test drive</button>
+     <button class="btn btn-g" type="button" data-wa="test-drive">Scrie-ne pe WhatsApp</button>
+    </form>
+    <div class="thanks" data-for="test-drive" hidden></div>
+   </div>
+  </div></div>
+
+  <!-- COMPARAȚIE -->
+  <div id="vCmp" hidden></div>
+  <!-- RAPORT EXEMPLU -->
+  <div id="vRep" hidden></div>
+ </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
